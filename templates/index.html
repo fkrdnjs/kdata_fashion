@@ -1,65 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>테스트임당</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1 class="mb-4">스타일 분석, 쇼핑몰 추천</h1>
-            <form id="image-form" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="file" name="image" id="image" class="form-control" accept="image/*">
-                </div>
-                <img id="preview" alt="Image preview" class="img-thumbnail d-none" style="max-width: 100%;">
-                <div class="form-group mt-3">
-                    <button type="submit" class="btn btn-primary">제출</button>
-                </div>
-            </form>
-        </div>
-        <div id="style-info" class="col-md-6"></div>
-    </div>
-</div>
-<script>
-    document.getElementById("image").onchange = function () {
-        let preview = document.getElementById("preview");
-        if (this.files && this.files[0]) {
-            let reader = new FileReader();
-            reader.onload = function (event) {
-                preview.src = event.target.result;
-                preview.classList.remove("d-none");
-            }
-            reader.readAsDataURL(this.files[0]);
-        } else {
-            preview.classList.add("d-none");
-        }
-    };
 
-    document.getElementById("image-form").onsubmit = function (event) {
-        event.preventDefault();
-        let form = this;
-        let formData = new FormData(form);
-        fetch("/", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`Server returned status ${response.status}`);
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="mb-4">스타일 분석, 쇼핑몰 추천</h1>
+                <form id="image-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="image" id="image" class="form-control" accept="image/*">
+                    </div>
+                    <img id="preview" alt="Image preview" class="img-thumbnail d-none" style="max-width: 100%;">
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary">제출</button>
+                    </div>
+                </form>
+            </div>
+            <div id="style-info" class="col-md-6"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("image").onchange = function () {
+            let preview = document.getElementById("preview");
+            if (this.files && this.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    preview.src = event.target.result;
+                    preview.classList.remove("d-none");
                 }
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                preview.classList.add("d-none");
+            }
+        };
+
+        document.getElementById("image-form").onsubmit = function (event) {
+            event.preventDefault();
+            let form = this;
+            let formData = new FormData(form);
+            fetch("/", {
+                method: "POST",
+                body: formData
             })
-            .then(data => {
-                let styleInfo = document.getElementById("style-info");
-                styleInfo.innerHTML = `<h2>스타일 정보</h2>
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`Server returned status ${response.status}`);
+                    }
+                })
+                .then(data => {
+                    let styleInfo = document.getElementById("style-info");
+                    styleInfo.innerHTML = `<h2>스타일 정보</h2>
                     <p>스타일: ${data.style}</p>
                     <p>비슷한 쇼핑몰: ${data.shop}</p>`;
-            })
-            .catch(error => console.error("Error:", error));
-    };
-</script>
+                })
+                .catch(error => console.error("Error:", error));
+        };
+    </script>
 </body>
+
 </html>
+{% endblock %}
