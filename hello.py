@@ -15,8 +15,11 @@ def index():
 def process_image(image_file):
     # 여기에 이미지 분석 파일 넣으면 될듯 싶어용
 
-    return {'style': '간지', 'shop': '뭐있지'}
+    return {'style': 'vintage', 'shop': '뭐있지'}
 
 if __name__ == '__main__':
     app.run(debug=True)
 
+@app.route('/content')
+def content():
+    return render_template('content.html')

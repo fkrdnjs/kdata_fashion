@@ -1,4 +1,10 @@
 @import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
 /*
 navbar css
@@ -34,6 +40,133 @@ main {
     width: 100%;
     height: 57.5rem;
 }
+
+main .background {
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/img/background_vintage.png");
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+}
+
+main #result-container {
+    width: 90rem;
+    height: 93%;
+    background-color: #fff;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+main #result-input-section {
+    width: 42rem;
+    height: 45rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+main #result-style {
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+main #result-input-img {
+    width: 35rem;
+    height: 35rem;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    border: 1px dashed #D5D5D5;
+}
+
+main #result-input-desc {
+    margin: 1rem 0 1rem 0;
+    color: #000, 58%;
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+main #result-btn-container {
+    width: 35rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main .btn-reselect {
+    width: 13rem;
+    height: 2rem;
+    color: #000;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 500;
+    border: 2px solid #000;
+}
+
+main .btn-search {
+    width: 10rem;
+    height: 2rem;
+    color: #000;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 500;
+    border: 2px solid #000;
+}
+
+main #mall-container {
+    width: 48rem;
+    height: 95%;
+    padding: 2rem 4rem 2rem 2rem;
+}
+
+main .mall {
+    width: 100%;
+    height: 33%;
+    margin-bottom: 1rem;
+}
+
+main .mall-desc {
+    width: 100%;
+    height: 15%;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main .mall-name {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+main .mall-insta {
+    font-size: 1.3rem;
+    color: #D5D5D5;
+}
+
+main .mall-img-container {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main .mall-img {
+    width: 32%;
+    height: 100%;
+    background-color: #F5F5F5;
+}
+
 
 /*
 footer css
