@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <title>Base</title>
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="nav-title">옷찾사</a>
+    </nav>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-title">옷찾사</div>
+            <div class="footer-copyright">Copyright &copy; 2023. otchatsa, All rights reserved</div>
+            <div class="footer-desc">옷찾사는 여성 의류를 ResNet 모델 기반으로 검색 이미지와 유사한 스타일과 여성 의류 쇼핑몰 정보를 제공하는 서비스입니다</div>
+        </div>
+        <div class="footer-url">
+            <a class="footer-github" target="blank" href="https://github.com/fkrdnjs/kdata_fashion.git">
+                <img alt="github LOGO" src="/static/img/githubLogo.png">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
