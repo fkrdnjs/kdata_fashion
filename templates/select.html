@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>옷찾사</title>
+    <link href="static\css\select.css" rel="stylesheet">
+</head>
+
+<body>
+    
+
+    <div id="contentbox">
+        <div class="left">
+            <label for="upload-image" id="label-preview" class="preview">
+                <input type="file" id="upload-image" class="upload-image" style="display:none;" />
+                <img src="static\img\upload.jpg" alt="Upload Image" id="preview-img" style="width: 125%; border: 1px solid rgb(0, 0, 0);" />	
+            </label>
+        </div>
+        <div class="right">
+
+            <img src="static\img\select.jpg" alt="select image" style="width: 70%; object-fit: cover; margin-bottom: 20px;">
+
+            <b><p>키워드 검색으로 찾기 어려웠던<br>스타일을 이미지로 찾아보세요!</p></b>
+      
+            <p>옷찾사가 당신의 스타일을 분석하여<br>
+                15가지의 스타일 정보와 유사한<br>
+                쇼핑몰 정보와 코디네이션을 제공합니다.</p>
+                <button class="submit-button" type="button" onclick="handleClick()">SEARCH</button>
+        </div>
+    </div>
+
+    <script>
+        const uploadImage = document.getElementById("upload-image");
+        const previewImg = document.getElementById("preview-img");
+  
+        uploadImage.addEventListener("change", function (e) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            previewImg.src = event.target.result;
+            previewImg.style.width = "100%";
+            previewImg.style.height = "100%";
+            previewImg.style.objectFit = "cover";
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        });
+
+        function handleClick() {
+            const input = document.getElementById('upload-image');
+            const image = input.files[0];
+
+            if (image) {
+            const reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = function () {
+                sessionStorage.setItem('uploadedImage', reader.result);
+            };
+            window.location.href = '/content';
+            } else {
+            alert('이미지를 선택해주세요.');
+            }
+        }
+  
+        // const submitButton = document.querySelector(".submit-button");
+
+        // submitButton.addEventListener("click", function () {
+        //     if (uploadImage.files.length === 0) {
+        //     alert("이미지 파일을 업로드해주세요.");
+        //     } else {
+        //     window.location.href = "result.html";
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
+{% endblock %}
