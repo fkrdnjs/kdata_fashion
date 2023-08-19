@@ -1,52 +1,86 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="background">
-    <div id="result-container">
-        <div id="result-input-section">
-            <div id="result-style">title</div>
-            <div id="result-input-img"></div>
-            <div id="result-input-desc">AI 분석으로 입력한 스타일 이미지와 유사한 스타일과 관련 여성 의류 쇼핑몰</br>
-                정보를 제공합니다. 스타일에 관한 쇼핑몰 코디네이션 예시도 참고할 수 있습니다.</div>
-            <div id="result-btn-container">
-                <button class="btn-reselect">이미지 재선택</button>
-                <button class="btn-search">검색</button>
-            </div>
-        </div>
-        <div id="mall-container">
-            <div class="mall">
-                <div class="mall-desc">
-                    <div class="mall-name">Top 1</div>
-                    <div class="mall-insta">Insta</div>
-                </div>
-                <div class="mall-img-container">
-                    <div class="mall-img"></div>
-                    <div class="mall-img"></div>
-                    <div class="mall-img"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="background">
+        <div id="result-container">
+            <div id="result-input-section">
+                <div id="result-style">title</div>
+                <div id="result-input-img"></div>
+                <div id="result-input-desc">AI 분석으로 입력한 스타일 이미지와 유사한 스타일과 관련 여성 의류 쇼핑몰</br>
+                    정보를 제공합니다. 스타일에 관한 쇼핑몰 코디네이션 예시도 참고할 수 있습니다.</div>
+                <div id="result-btn-container">
+                    <button class="btn-reselect">이미지 재선택</button>
+                    <button class="btn-search">검색</button>
                 </div>
             </div>
-            <div class="mall">
-                <div class="mall-desc">
-                    <div class="mall-name">Top 2</div>
-                    <div class="mall-insta">Insta</div>
+            <div id="mall-container">
+                <div class="mall">
+                    <div class="mall-desc">
+                        <div class="mall-name">Top 1</div>
+                        <div class="mall-insta">Insta</div>
+                    </div>
+                    <div class="mall-img-container">
+                        <div class="mall-img"></div>
+                        <div class="mall-img"></div>
+                        <div class="mall-img"></div>
+                    </div>
                 </div>
-                <div class="mall-img-container">
-                    <div class="mall-img"></div>
-                    <div class="mall-img"></div>
-                    <div class="mall-img"></div>
+                <div class="mall">
+                    <div class="mall-desc">
+                        <div class="mall-name">Top 2</div>
+                        <div class="mall-insta">Insta</div>
+                    </div>
+                    <div class="mall-img-container">
+                        <div class="mall-img"></div>
+                        <div class="mall-img"></div>
+                        <div class="mall-img"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="mall">
-                <div class="mall-desc">
-                    <div class="mall-name">Top 3</div>
-                    <div class="mall-insta">Insta</div>
-                </div>
-                <div class="mall-img-container">
-                    <div class="mall-img"></div>
-                    <div class="mall-img"></div>
-                    <div class="mall-img"></div>
+                <div class="mall">
+                    <div class="mall-desc">
+                        <div class="mall-name">Top 3</div>
+                        <div class="mall-insta">Insta</div>
+                    </div>
+                    <div class="mall-img-container">
+                        <div class="mall-img"></div>
+                        <div class="mall-img"></div>
+                        <div class="mall-img"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            const resultInputImg = document.getElementById("result-input-img");
+            const uploadedImage = sessionStorage.getItem("uploadedImage");
+      
+            if (uploadedImage) {
+              const imgElement = document.createElement("img");
+              imgElement.src = uploadedImage;
+              imgElement.style.width = "100%";
+              imgElement.style.height = "100%";
+              imgElement.style.objectFit = "cover";
+              resultInputImg.appendChild(imgElement);
+            } else {
+              alert("이미지가 선택되지 않았습니다. 이미지를 선택해주세요.");
+              window.location.href = "/"; // 이미지를 선택하지 않은 경우 사용자를 처음 페이지로 되돌립니다.
+            }
+        });
+      </script>
+      
+</body>
+</html>
+
+
+
+
 {% endblock %}

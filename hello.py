@@ -23,3 +23,7 @@ if __name__ == '__main__':
 @app.route('/content')
 def content():
     return render_template('content.html')
+
+@app.route('/select')
+def select():
+    return render_template('select.html')
