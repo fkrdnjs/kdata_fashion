@@ -44,7 +44,7 @@ main {
 main .background {
     width: 100%;
     height: 100%;
-    background-image: url("/static/img/background_vintage.png");
+    background-image: url("/static/img/bg_vintage.png");
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -52,7 +52,7 @@ main .background {
 }
 
 main #result-container {
-    width: 90rem;
+    width: 87%; /* 수정 */
     height: 93%;
     background-color: #fff;
     border-radius: 20px 20px 0 0;
@@ -80,8 +80,8 @@ main #result-style {
 }
 
 main #result-input-img {
-    width: 35rem;
-    height: 35rem;
+    width: 30rem; /* 수정 */
+    height: 30rem; /* 수정 */
     background-color: #F5F5F5;
     border-radius: 10px;
     border: 1px dashed #D5D5D5;
@@ -95,7 +95,7 @@ main #result-input-desc {
 }
 
 main #result-btn-container {
-    width: 35rem;
+    width: 30rem; 
     height: 4rem;
     display: flex;
     flex-direction: row;
