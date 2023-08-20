@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import random
 
 app = Flask(__name__)
 
@@ -22,7 +23,10 @@ if __name__ == '__main__':
 
 @app.route('/content')
 def content():
-    return render_template('content.html')
+    style = ["amekaji", "campuslook", "casual", "classic", "contemporary", "lovely", "luxury", "modernchic", "officlook", "romantic", "sexyglam", "simplebasic", "unique", "unisex", "vintage"]
+    number = random.randint(0, 14)
+    route = f"/static/img/bg_{style[number]}.png"
+    return render_template('content.html', title = style[number], route = route)
 
 @app.route('/select')
 def select():
