@@ -314,8 +314,8 @@ def similar_style(image_path, model_path, similarity_func):
     for number, i in enumerate(output):
         print(); print(f"{number+1}번째 쇼핑몰: {sorted_same_style_mall['mall'].to_list()[number]}"); print()
         for j in i:
-            image_ = Image.open(j)
-            display(image_); print()
+        image_ = Image.open(j)
+        display(image_); print()
 
     style = {'style' : class_names[image_category]}
     shopping_malls = pd.DataFrame({'shopping_mall' : sorted_same_style_mall['mall'].to_list(), 'instagram_ID' : sorted_same_style_mall['instagram_ID'].to_list()})

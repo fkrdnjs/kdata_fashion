@@ -165,6 +165,7 @@ main .mall-img {
     width: 32%;
     height: 100%;
     background-color: #F5F5F5;
+    object-fit: cover;
 }
 
 

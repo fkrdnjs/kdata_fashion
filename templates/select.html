@@ -2,25 +2,26 @@
 {% block content %}
 <div class="select-background">
     <div id="contentbox">
-        <div class="left">
-            <label for="upload-image" id="label-preview" class="preview">
-                <input type="file" id="upload-image" class="upload-image" style="display:none;" />
-                <img src="static\img\upload.jpg" alt="Upload Image" id="preview-img"
-                    style="width: 125%; border: 1px solid rgb(0, 0, 0);" />
-            </label>
-        </div>
-        <div class="right">
+        <form id="select-form-container" action="/select" method="post" enctype="multipart/form-data">
+            <div class="left">
+                <label for="upload-image" id="label-preview" class="preview">
+                    <input name="upload-image" type="file" id="upload-image" class="upload-image" enctype="multipart/form-data" accept="image/*" />
+                    <img src="static\img\upload.jpg" alt="Upload Image" id="preview-img"/>
+                </label>
+            </div>
+            <div class="right">
 
-            <img src="static\img\select.jpg" alt="select image"
-                style="width: 70%; object-fit: cover; margin-bottom: 20px;">
+                <img src="static\img\select.jpg" alt="select image"
+                    style="width: 70%; object-fit: cover; margin-bottom: 20px;">
 
-            <div class="select-main-desc">키워드 검색으로 찾기 어려웠던<br>스타일을 이미지로 찾아보세요!</div>
+                <div class="select-main-desc">키워드 검색으로 찾기 어려웠던<br>스타일을 이미지로 찾아보세요!</div>
 
-            <div class="select-detail-desc">옷찾사가 당신의 스타일을 분석하여<br>
-                15가지의 스타일 정보와 유사한<br>
-                쇼핑몰 정보와 코디네이션을 제공합니다.</div>
-            <button class="submit-button" type="button" onclick="handleClick()">SEARCH</button>
-        </div>
+                <div class="select-detail-desc">옷찾사가 당신의 스타일을 분석하여<br>
+                    15가지의 스타일 정보와 유사한<br>
+                    쇼핑몰 정보와 코디네이션을 제공합니다.</div>
+                <button class="submit-button" type="submit" onclick="handleClick()">SEARCH</button>
+            </div>
+        </form>
     </div>
 </div>
 
