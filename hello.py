@@ -386,6 +386,9 @@ def process_image(input_path):
         style, shopping_malls, output = similar_style(output_path, MODEL_PATH, calculate_deep_similarity)
         print(output)
         return style['style'], shopping_malls, output
+    except ValueError:
+        flash("이미지 파일이 분석하기 적합하지 않습니다.")
+        return render_template('select.html')
     except IndexError:
         flash("이미지 파일이 분석하기 적합하지 않습니다.")
         return render_template('select.html')

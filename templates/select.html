@@ -1,3 +1,11 @@
+{% with error_exc = get_flashed_messages() %}
+    {% if error_exc %}
+    <script>
+        alert("{{ error_exc[-1] }}")
+        window.location.href = '/select'
+    </script>
+    {% endif %}
+{% endwith %}
 {% extends "base.html" %}
 {% block content %}
 <div class="select-background">

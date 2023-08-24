@@ -19,8 +19,12 @@
                 <div id="result-input-desc">AI 분석으로 입력한 스타일 이미지와 유사한 스타일과 관련 여성 의류 쇼핑몰</br>
                     정보를 제공합니다. 스타일에 관한 쇼핑몰 코디네이션 예시도 참고할 수 있습니다.</div>
                 <div id="result-btn-container">
-                    <button class="btn-reselect">이미지 재선택</button>
-                    <button type="submit" class="btn-search">검색</button>
+                    <form id="reselect-form-container" action="/select" method="post" enctype="multipart/form-data">
+                        <label for="img-reselect" class="btn-reselect">이미지 재선택
+                            <input name="upload-image" id="img-reselect" type="file" enctype="multipart/form-data" accept="image/*" onchange="reselectImg(this);" style="display: none" />
+                        </label>
+                        <button type="submit" id="btn-research" class="btn-research" onclick="handleClick()">검색</button>
+                    </form>
                 </div>
             </div>
             <div id="mall-container">
@@ -49,7 +53,7 @@
                 <div class="mall">
                     <div class="mall-desc">
                         <div class="mall-name">{{mall[2]}}</div>
-                        <div class="mall-insta">{{insta[2]}}</div>
+                        <div class="mall-insta"><a href="http://www.instagram.com/{{ insta[2] }}">{{insta[2]}}</a></div>
                     </div>
                     <div class="mall-img-container">
                         <img alt="first" src="{{ codi }}20.jpg" class="mall-img">
@@ -65,19 +69,55 @@
         window.addEventListener("DOMContentLoaded", function () {
             const resultInputImg = document.getElementById("result-input-img");
             const uploadedImage = sessionStorage.getItem("uploadedImage");
+            const imgElement = document.createElement("img");
 
             if (uploadedImage) {
-                const imgElement = document.createElement("img");
                 imgElement.src = uploadedImage;
                 imgElement.style.width = "100%";
                 imgElement.style.height = "100%";
                 imgElement.style.objectFit = "cover";
                 resultInputImg.appendChild(imgElement);
             } else {
-                alert("이미지가 선택되지 않았습니다. 이미지를 선택해주세요.");
-                window.location.href = "/"; // 이미지를 선택하지 않은 경우 사용자를 처음 페이지로 되돌립니다.
+                    alert("이미지가 선택되지 않았습니다. 이미지를 선택해주세요.");
+                    window.location.href = "/"; // 이미지를 선택하지 않은 경우 사용자를 처음 페이지로 되돌립니다.
             }
         });
+
+        function reselectImg(input) {
+            const imgElement = document.createElement("img");
+            const resultInputImg = document.getElementById("result-input-img");
+
+            if (input.files && input.files[0]) {
+                const imgTag = document.getElementsByTagName("img")[0]
+                const reader = new FileReader();
+                reader.readAsDataURL(input.files[0]);
+                reader.onload = function (e) {
+                    resultInputImg.removeChild(imgTag)
+                    imgElement.src = reader.result;
+                    imgElement.style.width = "100%";
+                    imgElement.style.height = "100%";
+                    imgElement.style.objectFit = "cover";
+                    resultInputImg.appendChild(imgElement);
+                };
+            }
+        }
+
+        function handleClick() {
+            const input = document.getElementById('img-reselect');
+            const image = input.files[0];
+
+            if (image) {
+                const reader = new FileReader();
+                reader.readAsDataURL(image);
+                reader.onload = function () {
+                    sessionStorage.setItem('uploadedImage', reader.result);
+                };
+                window.location.href = '/content';
+            } else {
+                alert('이미지를 선택해주세요.');
+            }
+        }
+
     </script>
 
 </body>
